@@ -1,0 +1,45 @@
+<?xml version = "1.0" encoding = "UTF-8"  ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    <html xmlns="http://www.w3.org/1999/xhtml"
+            xmlns:ui="http://java.sun.com/jsf/facelets"
+            xmlns:h="http://java.sun.com/jsf/html"                
+            xmlns:f="http://java.sun.com/jsf/core">
+    <ui:param name ="page_name" value="Accueil"/>
+    
+    <h:panelGroup>
+    <body>
+    <h:panelGrid>
+    	<h:outputText value="email" />
+		<h:inputText value="#{employeBean.email}" /> 
+		
+		<h:outputText value="password" />
+		<h:inputText value="#{employeBean.password}" />
+		
+		<h:outputText value="nom" />
+		<h:inputText value="#{employeBean.nom}" />
+		
+		<h:outputText value="prenom" />
+		<h:inputText value="#{employeBean.prenom}" />
+		
+		<h:outputText value="Actif/Inactif" />
+		<h:selectBooleanCheckbox value="#{employeBean.actif}" />
+		
+		<h:outputText value="Role" />
+		<h:selectOneMenu value="#{employeBean.role}"> 
+			<f:selectItem itemLabel="selectioner le role " itemValue=""></f:selectItem>
+			<f:selectItems value="#{data.roles}"></f:selectItems>
+		</h:selectOneMenu>
+		
+		<h:commandButton action="#{employeBean.addEmploye}" value="Ajouter employe" />   
+    </h:panelGrid>
+    
+    <h:form>
+    <h:outputText value="Bonjour #{loginBean.employe.email}" />
+    
+    <h:commandButton id="btn" value="Liste des employee" action="#{employeBean.listEmploye()}" />
+    <h:commandLink value="Déconnexion" action="#{loginBean.doLogout}"/>
+    </h:form>
+    </body>
+    </h:panelGroup>
+    </html>
